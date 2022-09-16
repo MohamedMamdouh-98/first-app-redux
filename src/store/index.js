@@ -1,6 +1,19 @@
+import { createSlice } from "@reduxjs/toolkit";
 import { createStore } from "redux";
 
 const initState = { value: 0, showCounter: true };
+const counterSlice = createSlice({
+  name: "counter",
+  initialState: initState,
+  reducers: {
+    increase: (state, action) => {
+      state.value += 1;
+    },
+    decrease: (state, action) => {
+      state.value -= 1;
+    },
+  },
+});
 //-1 => create reducer
 const counterReducer = (state = initState, action) => {
   //logic
