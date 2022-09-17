@@ -1,14 +1,16 @@
-import React from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import { decrement, increment } from '../store/counterSlice'
-
+import React from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { logIn } from "../store/authSlice";
+import { decrement, increment } from "../store/counterSlice";
 
 const Counter = () => {
-  const count = useSelector((state) => state.counter.value)
-  const dispatch = useDispatch()  
+  const count = useSelector((state) => state.counter.value);
+  const auth = useSelector((state) => state.auth.isLoggedIn);
+  const dispatch = useDispatch();
   return (
     <div>
       <h1>Hello Redux Basic</h1>
+      {auth && (
         <>
           <div className="counter">Counter: {count}</div>
           <div>
@@ -20,12 +22,15 @@ const Counter = () => {
             </button>
           </div>
         </>
+      )}
 
       <div>
-        <button className="btn">Hide/Show Counter Number</button>
+        <button className="btn" onClick={() => dispatch(logIn())}>
+          {auth ? "logout" : "logIn"}
+        </button>
       </div>
     </div>
   );
-}
+};
 
-export default Counter
+export default Counter;
