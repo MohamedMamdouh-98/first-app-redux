@@ -12,10 +12,10 @@ const Counter = () => {
         <>
           <div className="counter">Counter: {count}</div>
           <div>
-            <button className="btn" onClick={() => dispatch(increment())}>
+            <button className="btn" onClick={() => dispatch(increment(5))}>
               increase +
             </button>
-            <button className="btn" onClick={() => dispatch(decrement())}>
+            <button className="btn" onClick={() => dispatch(decrement(2))}>
               decrease -
             </button>
           </div>
